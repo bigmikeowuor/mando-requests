@@ -2,7 +2,7 @@
 
 Firebase Cloud functions from the ground up to create a mini requests website.
 
-## Live site
+## Live Site
 
 The live site can be accessed at [this website][website]... 🏡
 
