@@ -10,3 +10,9 @@ exports.randomNumber = functions.https.onRequest((req, res) => {
 exports.toTheCovert = functions.https.onRequest((req, res) => {
 	res.redirect('https://www.s3interdev.com/');
 });
+
+// http callable function
+exports.sayHello = functions.https.onCall((data, context) => {
+	const name = data.name;
+	return `hello, ${name}`;
+});
