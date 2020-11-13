@@ -120,6 +120,10 @@ button {
 	cursor: pointer;
 }
 
+.error {
+	color: #ff0000;
+}
+
 /* auth styles */
 .auth {
 	width: 100%;
