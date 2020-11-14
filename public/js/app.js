@@ -1,6 +1,7 @@
 const requestModal = document.querySelector('.new-request');
 const requestLink = document.querySelector('.add-request');
 const requestForm = document.querySelector('.new-request form');
+const notification = document.querySelector('.notification');
 
 // open the request modal
 requestLink.addEventListener('click', () => {
@@ -32,3 +33,14 @@ requestForm.addEventListener('submit', (e) => {
 			requestForm.querySelector('.error').textContent = error.message;
 		});
 });
+
+// notifications
+const showNotification = (message) => {
+	notification.textContent = message;
+	notification.classList.add('active');
+
+	setTimeout(() => {
+		notification.classList.remove('active');
+		notification.textContent = '';
+	}, 3000);
+};

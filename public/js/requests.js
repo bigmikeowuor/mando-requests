@@ -8,7 +8,7 @@ var app = new Vue({
 			const upvote = firebase.functions().httpsCallable('upvote');
 
 			upvote({ id: id }).catch((error) => {
-				console.log(error.message);
+				showNotification(error.message);
 			});
 		},
 	},
