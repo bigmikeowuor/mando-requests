@@ -20,11 +20,17 @@ exports.userDeleted = functions.auth.user().onDelete((user) => {
 // http callable function (adding a mando request)
 exports.addRequest = functions.https.onCall((data, context) => {
 	if (!context.auth) {
-		throw new functions.https.HttpsError('unauthenticated', 'Only authenticated users can add requests');
+		throw new functions.https.HttpsError(
+			'unauthenticated',
+			'Only authenticated users can add requests'
+		);
 	}
 
-	if (data.text.length > 34) {
-		throw new functions.https.HttpsError('invalid-argument', 'Request must be no more than 30 characters long');
+	if (data.text.length > 55) {
+		throw new functions.https.HttpsError(
+			'invalid-argument',
+			'Request must be no more than 50 characters long'
+		);
 	}
 
 	return admin.firestore().collection('requests').add({
@@ -37,7 +43,10 @@ exports.addRequest = functions.https.onCall((data, context) => {
 exports.upvote = functions.https.onCall(async (data, context) => {
 	// check the auth state
 	if (!context.auth) {
-		throw new functions.https.HttpsError('unauthenticated', 'Only authenticated users can add an upvote');
+		throw new functions.https.HttpsError(
+			'unauthenticated',
+			'Only authenticated users can add an upvote'
+		);
 	}
 
 	// get refs for user doc and request doc
@@ -48,7 +57,10 @@ exports.upvote = functions.https.onCall(async (data, context) => {
 
 	// check if user has not already upvoted the request
 	if (doc.data().upvotedOn.includes(data.id)) {
-		throw new functions.https.HttpsError('failed-precondition', 'You can only upvote once');
+		throw new functions.https.HttpsError(
+			'failed-precondition',
+			'You can only upvote once'
+		);
 	}
 
 	// update user array
@@ -63,20 +75,22 @@ exports.upvote = functions.https.onCall(async (data, context) => {
 });
 
 // firestore trigger for tracking activity
-exports.logActivities = functions.firestore.document('/{collection}/{id}').onCreate((snap, context) => {
-	console.log(snap.data);
+exports.logActivities = functions.firestore
+	.document('/{collection}/{id}')
+	.onCreate((snap, context) => {
+		console.log(snap.data);
 
-	const collection = context.params.collection;
-	const id = context.params.id;
-	const activities = admin.firestore().collection('activities');
+		const collection = context.params.collection;
+		const id = context.params.id;
+		const activities = admin.firestore().collection('activities');
 
-	if (collection === 'requests') {
-		return activities.add({ text: 'A new Mando request was added.' });
-	}
+		if (collection === 'requests') {
+			return activities.add({ text: 'A new Mando request was added.' });
+		}
 
-	if (collection === 'users') {
-		return activities.add({ text: 'A new user signed up.' });
-	}
+		if (collection === 'users') {
+			return activities.add({ text: 'A new user signed up.' });
+		}
 
-	return null;
-});
+		return null;
+	});
