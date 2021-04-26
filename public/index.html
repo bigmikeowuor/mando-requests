@@ -3,9 +3,12 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="icon" href="favicon.png" type="image/png" sizes="16x16" />
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-		<title>Mando Requests by Superior Software Solutions</title>
+		<link rel="shortcut icon" href="favicon.png" />
+		<link
+			href="https://fonts.googleapis.com/icon?family=Material+Icons"
+			rel="stylesheet"
+		/>
+		<title>Mando Requests by Michael Owuor</title>
 		<link rel="stylesheet" href="css/styles.css" />
 	</head>
 	<body>
@@ -63,7 +66,9 @@
 					<span class="text">{{ request.text }}</span>
 					<div>
 						<span class="votes">{{ request.upvotes }}</span>
-						<i class="material-icons upvote" v-on:click="upvoteRequest(request.id)">arrow_upward</i>
+						<i class="material-icons upvote" v-on:click="upvoteRequest(request.id)"
+							>arrow_upward</i
+						>
 					</div>
 				</li>
 			</ul>
