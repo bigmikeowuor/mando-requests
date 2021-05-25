@@ -1,11 +1,11 @@
 // The web app's Firebase configuration
 var firebaseConfig = {
-	apiKey: 'AIzaSyBqK8PlPXm8BRtqCBuWB_U0NVpvz6sCF3s',
-	authDomain: 'mando-requests-swap.firebaseapp.com',
-	projectId: 'mando-requests-swap',
-	storageBucket: 'mando-requests-swap.appspot.com',
-	messagingSenderId: '920802875595',
-	appId: '1:920802875595:web:b77450f6617f42657aa34e',
+	apiKey: 'AIzaSyA6x4MMHoqAa_OiZsStJTIDoVl2CCxpF2c',
+	authDomain: 'mando-requests-wap.firebaseapp.com',
+	projectId: 'mando-requests-wap',
+	storageBucket: 'mando-requests-wap.appspot.com',
+	messagingSenderId: '567224916786',
+	appId: '1:567224916786:web:da0d52ea0130f94d91952b',
 };
 
 // Initialize Firebase
